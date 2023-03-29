@@ -1,0 +1,1182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Finest Products,Finest Results</title>
+    <link rel="shortcut icon" href="logo.png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="script.js"></script>
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;400;500;600&display=swap");
+
+        :root {
+            --orange: #ff7800;
+            --black: #130f40;
+            --light-color: #666;
+            --box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+            --border: 2rem solid rgba(0, 0, 0, 0.1);
+            --outline: 0.1rem solid rgba(0, 0, 0, 0.1);
+            --outline-hover: 0.2rem solid var(--black);
+        }
+
+        html {
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+            scroll-padding-top: 7rem;
+        }
+
+        body {
+            background: #eee;
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 2rem 9%;
+            background: #fff;
+            box-shadow: var(--box-shadow);
+        }
+
+        .header .logo {
+            font-size: 2.5rem;
+            font-weight: bolder;
+            color: var(--black);
+        }
+
+        .header .logo i {
+            color: var(--orange);
+        }
+
+        .header .navbar a {
+            font-size: 1.5rem;
+            margin: 0.1rem;
+            color: var(--black);
+            padding-left: 40px;
+        }
+
+        .header .navbar a:hover {
+            color: var(--orange);
+        }
+
+        .dropbtn {
+            padding: 16px;
+            background-color: white;
+            font-size: 1.5rem;
+            margin: 0.1rem;
+            color: var(--black);
+            border: none;
+            cursor: pointer;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+            font-size: 1.5rem;
+            margin: 0.1rem;
+            color: var(--black);
+            padding-left: 25px;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            padding: 0px 16px;
+            background-color: white;
+            min-width: 100px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: black;
+            text-decoration: none;
+            display: block;
+            padding: 10px 10px;
+            font-size: 1.5rem;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        * {
+            font-family: "Poppins", sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            outline: none;
+            border: none;
+            text-decoration: none;
+            text-transform: capitalize;
+            transition: all 0.2s linear;
+        }
+
+        a {
+            text-decoration: none;
+            color: black;
+        }
+
+        .slider {
+            width: 1500px;
+            height: 550px;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 150px;
+            margin-left: 20px;
+            margin-right: 10px;
+        }
+
+        .slides {
+            width: 1500px;
+            height: 550px;
+            display: flex;
+        }
+
+        .slides input {
+            display: none;
+        }
+
+        .slide {
+            width: 1500px;
+            transition: 1s;
+        }
+
+        .navigation-manual {
+            position: absolute;
+            width: 1500px;
+            margin-top: -40px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .manual-btn {
+            border: 2px solid white;
+            padding: 5px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 1s;
+        }
+
+        .manual-btn:not(:last-child) {
+            margin-right: 30px;
+        }
+
+        .manual-btn:hover {
+            background: white;
+        }
+
+        #radio1:checked~.first {
+            margin-left: 0;
+        }
+
+        #radio2:checked~.first {
+            margin-left: -1500px;
+        }
+
+        #radio3:checked~.first {
+            margin-left: -3000px;
+        }
+
+        #radio4:checked~.first {
+            margin-left: -4500px;
+        }
+
+        .navigation-auto {
+            position: absolute;
+            width: 1500px;
+            display: flex;
+            justify-content: center;
+            margin-top: -40px;
+        }
+
+        .navigation-auto div {
+            border: 2px solid white;
+            border-radius: 10px;
+            transition: 1s;
+        }
+
+        .navigation-auto div:not(:last-child) {
+            margin-right: 30px;
+        }
+
+        #radio1:checked~.navigation-auto .auto-btn1 {
+            background: white;
+        }
+
+        #radio2:checked~.navigation-auto .auto-btn2 {
+            background: white;
+        }
+
+        #radio3:checked~.navigation-auto .auto-btn3 {
+            background: white;
+        }
+
+        #radio4:checked~.navigation-auto .auto-btn4 {
+            background: white;
+        }
+
+        .products {
+            width: 100%;
+            height: 140vh;
+            padding: 25px 0;
+        }
+
+        .products h1 {
+            margin: 35px 0;
+            font-size: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-transform: uppercase;
+            background: linear-gradient(to right, #ff7800, #6c14d0);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .products .box {
+            padding-left: 25px;
+        }
+
+        .products .box .card .image img {
+            width: 150px;
+        }
+
+        .products .box {
+            width: 90%;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            grid-gap: 25px 0;
+        }
+
+        .products .box .card {
+            width: 290px;
+            height: 440px;
+            box-shadow: 0 0 8px #ff7800;
+            border-radius: 5px;
+            text-align: center;
+            padding: 10px 20px;
+            background: #f6f6f6;
+        }
+
+        .products .box .card .small_card {
+            display: flex;
+            flex-flow: column;
+            position: absolute;
+            margin: 10px 0;
+            transform: translateX(-20px);
+            transition: 0.2s;
+            opacity: 0;
+        }
+
+        .products .box .card:hover .small_card {
+            transform: translateX(2px);
+            cursor: pointer;
+            opacity: 1;
+        }
+
+        .products .box .card .small_card i {
+            width: 45px;
+            height: 45px;
+            border-radius: 5px;
+            font-size: 18px;
+            margin: 2px 0;
+            line-height: 40px;
+            border: 2px solid #999999;
+            transition: 0.2s;
+        }
+
+        .products .box .card .image {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .products .box .card .image img {
+            width: 150px;
+            margin: 15px 0;
+            transition: 0.3s;
+        }
+
+        .products .box .card:hover .image img {
+            transform: scale(1.1);
+        }
+
+        .products .box .card .small_card i:hover {
+            color: #ff7800;
+        }
+
+        .products .box .card .products_text h2 {
+            font-size: 30px;
+            margin-top: 15px;
+        }
+
+        .products .box .card .products_text p {
+            color: #91919191;
+            line-height: 21px;
+            margin-top: 8px 0;
+        }
+
+        .products .box .card .products_text h3 {
+            margin: 7px 0;
+        }
+
+        .products .box .card .products_text .products_star {
+            color: orange;
+            margin-bottom: 19px;
+            cursor: pointer;
+        }
+
+        .products .box .card .products_text .btn {
+            text-decoration: none;
+            padding: 10px 20px;
+            background: linear-gradient(to right, #ff7800, #6c14d0);
+            color: white;
+        }
+
+        #Horticulture {
+            margin-top: 2px;
+        }
+
+        #Review {
+            margin-top: 0px;
+        }
+
+        .review {
+            width: 100%;
+            height: 100vh;
+            padding-top: 1570px;
+        }
+
+        .review h1 {
+            font-size: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+        }
+
+        .review h1 span {
+            background: linear-gradient(to left, #ff7800, #6c14d0);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-left: 15px;
+        }
+
+        .review .review_box {
+            width: 95%;
+            position: relative;
+            top: 7%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+        }
+
+        .review .profile .profile_image {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 5px 0;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .review .profile .profile_image:hover {
+            transform: scale(1.2);
+        }
+
+        .review .profile_image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .review .profile {
+            display: flex;
+            align-items: center;
+        }
+
+        .review .review_box .review_card {
+            width: 500px;
+            background: #f3f1f1;
+            padding: 20px 25px;
+            border-radius: 5px;
+            margin: 15px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .review .review_box .review_card .card_top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .review .review_box .review_card .card_top .profile .name {
+            margin-left: 20px;
+            line-height: 22px;
+        }
+
+        .review .review_box .review_card .card_top .profile .name strong {
+            font-size: 20px;
+        }
+
+        .review .review_box .review_card .card_top .profile .name .like i {
+            color: orange;
+            display: inline-block;
+            font-size: 12px;
+        }
+
+        .review .review_box .review_card .comment p {
+            text-align: justify;
+            line-height: 22px;
+            margin-top: 15px;
+        }
+
+        .Q-A {
+            padding-top: 500px;
+        }
+
+        footer {
+            width: 100%;
+            padding-top: 500px;
+        }
+
+        footer .footer_main {
+            width: 100%;
+            background: linear-gradient(to left, #6c14d0, #ff7800);
+            display: flex;
+            justify-content: space-around;
+        }
+
+        footer .footer_main .tag {
+            margin: 10px 0;
+        }
+
+        footer .footer_main .tag .center {
+            text-align: center;
+        }
+
+        footer .footer_main .tag h1 {
+            font-size: 25px;
+            margin: 25px 0;
+            color: #1c0080;
+        }
+
+        footer .footer_main .tag a {
+            display: block;
+            color: black;
+            text-decoration: none;
+            margin: 9px 0;
+        }
+
+        footer .footer_main .tag a i {
+            padding: 0 10px;
+            transition: 0.3;
+        }
+
+        footer .footer_main .tag a i:hover {
+            color: #c72092;
+        }
+
+        footer .footer_main .tag .social_link {
+            display: flex;
+
+        }
+
+        footer .footer_main .tag .social_link a {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            text-align: center;
+            text-decoration: none;
+            color: black;
+            box-shadow: 0 0 20px 10px rgba(0, 0, 0, 0.05);
+            position: relative;
+            margin: 0 5px;
+            z-index: 10;
+            overflow: hidden;
+        }
+
+        footer .footer_main .tag .social_link a .fa-brands {
+            font-size: 15px;
+            line-height: 30px;
+            z-index: 10;
+            position: relative;
+            transition: 0.5s;
+        }
+
+        footer .footer_main .tag .social_link a:hover i {
+            color: white;
+
+        }
+
+        footer .footer_main .tag .social_link a::after {
+            content: '';
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: -90px;
+            background: linear-gradient(-45deg, #c72092, #6c14d0);
+            position: absolute;
+            z-index: -10;
+            transition: 0.5s;
+        }
+
+        footer .footer_main .tag .social_link a:hover::after {
+            left: 0;
+        }
+
+        footer .footer_main .tag .search_bar {
+            width: 230px;
+            height: 30px;
+            background: rgb(202, 202, 202);
+            border-radius: 25px;
+        }
+
+        footer .footer_main .tag .search_bar input {
+            width: 200px;
+            padding: 2px 0;
+            position: relative;
+            top: 17%;
+            left: 6%;
+            border: none;
+            background: none;
+            outline: none;
+            font-size: 13px;
+        }
+
+        footer .footer_main .tag .search_bar button {
+            padding: 7px 15px;
+            background: linear-gradient(to right, #c72092, #6c14d0);
+            border: none;
+            margin-top: 15px;
+            border-radius: 25px;
+            color: white;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <a href="#" class="logo"><i class="fa-solid fa-wheat-awn"></i>Happy Farming</a>
+        <nav class="navbar">
+            <a href="#home">Home</a>
+            <div class="dropdown">
+                <button class="dropbtn">Learn</button>
+                <div class="dropdown-content">
+                    <a href="#Field Crops">Field Crops</a>
+                    <a href="#Horticulture">Horticulture</a>
+                    <a href="#Animal">Animal Husbandary</a>
+                    <a href="#Organic">Organic Farming</a>
+                </div>
+            </div>
+            <a href="#Review">Reviews</a>
+            <a href="#About us">About Us</a>
+            <div class="dropdown">
+                <button class="dropbtn">Login</button>
+                <div class="dropdown-content">
+                    <a href="farmers.html">Farmers</a>
+                    <a href="consumer.html">Consumers</a>
+                    <a href="admin.html">Admin</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="slider" id="home">
+        <div class="slides">
+            <input type="radio" name="radio-btn" id="radio1" />
+            <input type="radio" name="radio-btn" id="radio2" />
+            <input type="radio" name="radio-btn" id="radio3" />
+            <input type="radio" name="radio-btn" id="radio4" />
+            <div class="slide first">
+                <img src="farmer1.png" width="1500px" height="550px" />
+            </div>
+            <div class="slide">
+                <img src="farmer2.png" width="1500px" height="550px" />
+            </div>
+            <div class="slide">
+                <img src="farmer3.png" width="1500px" height="550px" />
+            </div>
+            <div class="slide">
+                <img src="farmer4.png" width="1500px" height="550px" />
+            </div>
+            <div class="navigation-auto">
+                <div class="auto-btn1"></div>
+                <div class="auto-btn2"></div>
+                <div class="auto-btn3"></div>
+                <div class="auto-btn4"></div>
+            </div>
+        </div>
+        <div class="navigation-manual">
+            <label for="radio1" class="manual-btn"></label>
+            <label for="radio2" class="manual-btn"></label>
+            <label for="radio3" class="manual-btn"></label>
+            <label for="radio4" class="manual-btn"></label>
+        </div>
+    </div>
+    <div class="products" id="Field Crops">
+        <h1>Field Crops</h1>
+        <div class="box">
+            <div class="card">
+                <div class="small_card">
+                    <i class="fa-solid fa-heart"></i>
+                    <i class="fa-solid fa-share"></i>
+                </div>
+                <div class="image">
+                    <img src="wheat.jpg" />
+                </div>
+                <div class="products_text">
+                    <p>May 13, 2019 • Field Crops</p>
+                    <h3>
+                        Wheat Cultivation In India:Wheat Crop Cultivation And Production
+                    </h3>
+                    <div class="products_star">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                    </div>
+                    <a href="https://apeda.gov.in/apedawebsite/SubHead_Products/Wheat.htm#:~:text=Major%20wheat%2Dgrowing%20states%20in,world%20shows%20a%20rising%20trend."
+                        class="btn">Read More</a>
+                </div>
+            </div>
+            <div class="box">
+                <div class="card">
+                    <div class="small_card">
+                        <i class="fa-solid fa-heart"></i>
+                        <i class="fa-solid fa-share"></i>
+                    </div>
+                    <div class="image">
+                        <img src="barley.jpg" />
+                    </div>
+                    <div class="products_text">
+                        <p>May 8, 2019 • Field Crops</p>
+                        <h3>Barley Crop Cultivation In India.</h3>
+                        <div class="products_star">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star-half-stroke"></i>
+                        </div>
+                        <a href="https://iiwbr.icar.gov.in/wp-content/uploads/2018/02/EB-53-Barley-Cultivation-in-India-Pocket-Guide.pdf"
+                            class="btn">Read More</a>
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="card">
+                        <div class="small_card">
+                            <i class="fa-solid fa-heart"></i>
+                            <i class="fa-solid fa-share"></i>
+                        </div>
+                        <div class="image">
+                            <img src="paddy.jpg" />
+                        </div>
+                        <div class="products_text">
+                            <p>January 9, 2018 • Field Crops</p>
+                            <h3>
+                                Paddy Cultivation Guide:Different Ways Of Rice Cultivation In
+                                India
+                            </h3>
+                            <div class="products_star">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star-half-stroke"></i>
+                                <i class="fa-regular fa-star"></i>
+                            </div>
+                            <a href="https://www.toppr.com/ask/content/concept/rice-cultivation-in-india-205882/#:~:text=In%20India%2C%20rice%20is%20cultivated,not%20have%20supplementary%20irrigation%20facilities."
+                                class="btn">Read More</a>
+                        </div>
+                    </div>
+                    <div class="box">
+                        <div class="card">
+                            <div class="small_card">
+                                <i class="fa-solid fa-heart"></i>
+                                <i class="fa-solid fa-share"></i>
+                            </div>
+                            <div class="image">
+                                <img src="majorcrops.jpg" />
+                            </div>
+                            <div class="products_text">
+                                <p>May 23, 2019 • Field Crops</p>
+                                <h3>
+                                    Major Field Crops:Different Types Of Field Crops In India
+                                </h3>
+                                <div class="products_star">
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-regular fa-star"></i>
+                                </div>
+                                <a href="https://www.sciencedirect.com/topics/agricultural-and-biological-sciences/field-crops#:~:text=Field%20crops%20include%20maize%2C%20sorghum,%2C%20pasture%2C%20and%20many%20others."
+                                    class="btn">Read More</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="products" id="Horticulture">
+            <h1>Horticulture</h1>
+            <div class="box">
+                <div class="card">
+                    <div class="small_card">
+                        <i class="fa-solid fa-heart"></i>
+                        <i class="fa-solid fa-share"></i>
+                    </div>
+                    <div class="image">
+                        <img src="grape.jpg" />
+                    </div>
+                    <div class="products_text">
+                        <p>Feb 13, 2019 • Horticulture</p>
+                        <h3>Grape Cultivation In India:Complete Guidance</h3>
+                        <div class="products_star">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                        </div>
+                        <a href="https://apeda.gov.in/apedawebsite/SubHead_Products/Grapes.htm#:~:text=Thompson%20Seedless%20is%20the%20highest,%2C%20Tamil%20Nadu%2C%20and%20Mizoram."
+                            class="btn">Read More</a>
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="card">
+                        <div class="small_card">
+                            <i class="fa-solid fa-heart"></i>
+                            <i class="fa-solid fa-share"></i>
+                        </div>
+                        <div class="image">
+                            <img src="oranges.jpg" />
+                        </div>
+                        <div class="products_text">
+                            <p>June 29, 2020 • Horticulture</p>
+                            <h3>Sweet Orange Cultivation In India</h3>
+                            <div class="products_star">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star-half-stroke"></i>
+                            </div>
+                            <a href="https://vikaspedia.in/agriculture/crop-production/package-of-practices/fruits-1/sweet-orange-1#:~:text=The%20major%20Sweet%20orange%20(Citrus,%2C%20Mizoram%20and%20Jammu%20%26%20Kashmir."
+                                class="btn">Read More</a>
+                        </div>
+                    </div>
+                    <div class="box">
+                        <div class="card">
+                            <div class="small_card">
+                                <i class="fa-solid fa-heart"></i>
+                                <i class="fa-solid fa-share"></i>
+                            </div>
+                            <div class="image">
+                                <img src="lemons.jpg" />
+                            </div>
+                            <div class="products_text">
+                                <p>June 15, 2020 • Horticulture</p>
+                                <h3>Acid Lemon Cultivation In India:Complete Guideliness</h3>
+                                <div class="products_star">
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star-half-stroke"></i>
+                                    <i class="fa-regular fa-star"></i>
+                                </div>
+                                <a href="https://www.agrifarming.in/lime-farming#:~:text=Acid%20lime%20is%20cultivated%20largely,limited%20extent%20in%20other%20states."
+                                    class="btn">Read More</a>
+                            </div>
+                        </div>
+                        <div class="box">
+                            <div class="card">
+                                <div class="small_card">
+                                    <i class="fa-solid fa-heart"></i>
+                                    <i class="fa-solid fa-share"></i>
+                                </div>
+                                <div class="image">
+                                    <img src="neem.jpg" />
+                                </div>
+                                <div class="products_text">
+                                    <p>July 1, 2019 • Horticulture</p>
+                                    <h3>Malabar Neem Plantation Details</h3>
+                                    <div class="products_star">
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-regular fa-star"></i>
+                                    </div>
+                                    <a href="https://www.agrifarming.in/malabar-neem-farming#:~:text=The%20tree%20can%20be%20cultivated,known%20for%20its%20fast%20growth."
+                                        class="btn">Read More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="products" id="Animal">
+                <h1>Animal Husbandary</h1>
+                <div class="box">
+                    <div class="card">
+                        <div class="small_card">
+                            <i class="fa-solid fa-heart"></i>
+                            <i class="fa-solid fa-share"></i>
+                        </div>
+                        <div class="image">
+                            <img src="quailfarming.jpg" />
+                        </div>
+                        <div class="products_text">
+                            <p>August 16, 2018 • Animal Husbandry</p>
+                            <h3>
+                                Quail Farming in India: Complete Guidance on Quail Bird
+                                Rearing
+                            </h3>
+                            <div class="products_star">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-regular fa-star"></i>
+                            </div>
+                            <a href="https://timesofagriculture.com/quail-bird-farming-in-india/" class="btn">Read
+                                More</a>
+                        </div>
+                    </div>
+                    <div class="box">
+                        <div class="card">
+                            <div class="small_card">
+                                <i class="fa-solid fa-heart"></i>
+                                <i class="fa-solid fa-share"></i>
+                            </div>
+                            <div class="image">
+                                <img src="chickenfarming.jpg" />
+                            </div>
+                            <div class="products_text">
+                                <p>February 14, 2018 • Animal Husbandry</p>
+                                <h3>
+                                    Broiler Farming Guide: Information on Broiler Chicken
+                                    Farming in India
+                                </h3>
+                                <div class="products_star">
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star-half-stroke"></i>
+                                </div>
+                                <a href="https://www.asiafarming.com/poultry-farming-information-guide" class="btn">Read
+                                    More</a>
+                            </div>
+                        </div>
+                        <div class="box">
+                            <div class="card">
+                                <div class="small_card">
+                                    <i class="fa-solid fa-heart"></i>
+                                    <i class="fa-solid fa-share"></i>
+                                </div>
+                                <div class="image">
+                                    <img src="eggfarming.jpg" />
+                                </div>
+                                <div class="products_text">
+                                    <p>February 16, 2018 • Animal Husbandry</p>
+                                    <h3>
+                                        Egg Layer Farming in India: How to Start an Egg Poultry
+                                        Farm
+                                    </h3>
+                                    <div class="products_star">
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star-half-stroke"></i>
+                                        <i class="fa-regular fa-star"></i>
+                                    </div>
+                                    <a href="https://saudijournals.com/media/articles/SJHSS_66_193-198.pdf"
+                                        class="btn">Read More</a>
+                                </div>
+                            </div>
+                            <div class="box">
+                                <div class="card">
+                                    <div class="small_card">
+                                        <i class="fa-solid fa-heart"></i>
+                                        <i class="fa-solid fa-share"></i>
+                                    </div>
+                                    <div class="image">
+                                        <img src="beefarming.jpg" />
+                                    </div>
+                                    <div class="products_text">
+                                        <p>February 5, 2018 • Animal Husbandry</p>
+                                        <h3>
+                                            Beekeeping in India: Guide to Start a Honey Bee Farm
+                                        </h3>
+                                        <div class="products_star">
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-regular fa-star"></i>
+                                        </div>
+                                        <a href="https://www.researchgate.net/publication/313692521_Beekeeping_in_India"
+                                            class="btn">Read More</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="products" id="Organic">
+                    <h1>Organic Farming</h1>
+                    <div class="box">
+                        <div class="card">
+                            <div class="small_card">
+                                <i class="fa-solid fa-heart"></i>
+                                <i class="fa-solid fa-share"></i>
+                            </div>
+                            <div class="image">
+                                <img src="vermicompost.jpg" />
+                            </div>
+                            <div class="products_text">
+                                <p>March 10, 2018 • Organic Farming</p>
+                                <h3>
+                                    Vermicomposting Project: What is Vermicompost and How to
+                                    Prepare It
+                                </h3>
+                                <div class="products_star">
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-regular fa-star"></i>
+                                </div>
+                                <a href="https://link.springer.com/article/10.1007/s40093-018-0225-7" class="btn">Read
+                                    More</a>
+                            </div>
+                        </div>
+                        <div class="box">
+                            <div class="card">
+                                <div class="small_card">
+                                    <i class="fa-solid fa-heart"></i>
+                                    <i class="fa-solid fa-share"></i>
+                                </div>
+                                <div class="image">
+                                    <img src="organicmanure.jpg" />
+                                </div>
+                                <div class="products_text">
+                                    <p>February 21, 2018 • Organic Farming</p>
+                                    <h3>
+                                        Organic Manure: How to Make and Apply Different Types of
+                                        Manure
+                                    </h3>
+                                    <div class="products_star">
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star-half-stroke"></i>
+                                    </div>
+                                    <a href="https://www.researchgate.net/publication/360791666_ROLE_OF_ORGANIC_MANURE_IN_AGRICULTURE_A_REVIEW"
+                                        class="btn">Read More</a>
+                                </div>
+                            </div>
+                            <div class="box">
+                                <div class="card">
+                                    <div class="small_card">
+                                        <i class="fa-solid fa-heart"></i>
+                                        <i class="fa-solid fa-share"></i>
+                                    </div>
+                                    <div class="image">
+                                        <img src="organic farming.jpg" />
+                                    </div>
+                                    <div class="products_text">
+                                        <p>January 13, 2018 • Organic Farming</p>
+                                        <h3>
+                                            Organic Farming in India: Organic Farming Methods and
+                                            Certification Guide
+                                        </h3>
+                                        <div class="products_star">
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star-half-stroke"></i>
+                                            <i class="fa-regular fa-star"></i>
+                                        </div>
+                                        <a href="https://www.jmra.in/html-article/14940" class="btn">Read More</a>
+                                    </div>
+                                </div>
+                                <div class="box">
+                                    <div class="card">
+                                        <div class="small_card">
+                                            <i class="fa-solid fa-heart"></i>
+                                            <i class="fa-solid fa-share"></i>
+                                        </div>
+                                        <div class="image">
+                                            <img src="imp-organicfarming.jpg" />
+                                        </div>
+                                        <div class="products_text">
+                                            <p>January 20, 2018 • Organic Farming</p>
+                                            <h3>Farming in India:Importance Of Organic Farming</h3>
+                                            <div class="products_star">
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star-half-stroke"></i>
+                                                <i class="fa-regular fa-star"></i>
+                                            </div>
+                                            <a href="https://www.tractorjunction.com/blog/organic-farming-in-india-types-methods-advantages/"
+                                                class="btn">Read More</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="review">
+        <h1>Customer's<span>review</span></h1>
+        <div class="review_box">
+            <div class="review_card">
+                <div class="card_top">
+                    <div class="profile">
+                        <div class="profile_image">
+                            <img src="girl1.png" />
+                        </div>
+                        <div class="name">
+                            <strong>Ranidi Lochana</strong>
+                            <div class="like">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star-half-stroke"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="comment">
+                    <p>
+                        I enjoyed a lot Organic Farming In India article it depends on
+                        fertilizers of organic source such as compost, green manure and
+                        bone meal where biological pest control, mixed cropping and the
+                        fostering of insect predators are encouraged.
+                    </p>
+                </div>
+            </div>
+            <div class="review_card">
+                <div class="card_top">
+                    <div class="profile">
+                        <div class="profile_image">
+                            <img src="girl2.png" />
+                        </div>
+                        <div class="name">
+                            <strong>Sayuru Tharanga</strong>
+                            <div class="like">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star-half-stroke"></i>
+                                <i class="fa-regular fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="comment">
+                    <p>
+                        I really loved this web because it increased my interaction with
+                        farmers and I also got to buy fresh vegetables.The farmer was very
+                        happy while seeing me purchased from him.
+                    </p>
+                </div>
+            </div>
+            <div class="review_card">
+                <div class="card_top">
+                    <div class="profile">
+                        <div class="profile_image">
+                            <img src="girl3.png" />
+                        </div>
+                        <div class="name">
+                            <strong>Senuda Dilwan</strong>
+                            <div class="like">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star-half-stroke"></i>
+                                <i class="fa-regular fa-star"></i>
+                                <i class="fa-regular fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="comment">
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro
+                        perferendis accusamus temporibus modi perspiciatis quam vitae ut
+                        eos doloremque eius sunt libero reprehenderit aperiam, id fugit!
+                        Ipsam deleniti error suscipit?
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container" id="Review"></div>
+    <footer>
+        <div class="footer_main" id="About us">
+            <div class="tag">
+                <h1>Contact</h1>
+                <a href="#"><i class="fa-sharp fa-solid fa-house"></i>123/Jujjavarpu RadhaRashmitha/India</a>
+                <a href="#"><i class="fa-solid fa-phone"></i>+91 7989977187</a>
+                <a href="#"><i class="fa-solid fa-envelope"></i>contact@gmail.com</a>
+            </div>
+            <div class="tag">
+                <h1>Follow Us</h1>
+                <div class="social_link">
+                    <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="tag">
+                <h1>News Letter</h1>
+                <div class="search_bar">
+                    <input type="text" placeholder="Your email id here">
+                    <button type="submit">Subscribe</button>
+                </div>
+            </div>
+            <div class="tag">
+                <div class="map">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3824.1666146608172!2d81.51990931478478!3d16.56811898857441!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a37cd4eb220051d%3A0xea3d7b50d0a1458!2sShri%20Vishnu%20Engineering%20College%20Autonomous!5e0!3m2!1sen!2sin!4v1669296313757!5m2!1sen!2sin"
+                        width="450px" height="300px" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            
+                </div>
+
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
